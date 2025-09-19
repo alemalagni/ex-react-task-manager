@@ -38,3 +38,7 @@
 .deleteButton:hover {
     background-color: #ff4c4c;
 }
+
+.descriptionSection {
+    padding-bottom: 20px;
+}
