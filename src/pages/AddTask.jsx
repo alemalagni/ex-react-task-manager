@@ -1,7 +1,7 @@
 export default function AddList() {
     return (
         <div>
-            <h1>Add List</h1>
+            <h1>Add Task</h1>
         </div>
     )
 }
