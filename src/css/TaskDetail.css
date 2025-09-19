@@ -1,8 +1,9 @@
 .taskDetails {
     display: flex;
-    padding: 20px;
+    padding: 20px 0px;
     align-items: center;
     justify-content: space-evenly;
+    width: 400px;
 }
 
 .taskDetails p,
