@@ -1,0 +1,39 @@
+.taskDetails {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.taskDetails p,
+.taskDetails h4,
+.taskDetails h2 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.statusSection {
+    width: 200px;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.deleteButton {
+    background-color: #f17070;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #ff4c4c;
+}
