@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../components/GlobalContext";
+import "../css/TaskList.css";
 
 export default function TaskList() {
     const { tasks } = useGlobalContext();
