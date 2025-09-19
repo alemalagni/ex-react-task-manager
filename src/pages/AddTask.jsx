@@ -8,15 +8,28 @@ export default function AddTask() {
 
     function controlTitle(title) {
         const errorTitle = document.querySelector(".errorTitle");
+        const errorTitle2 = document.querySelector(".errorTitle2");
         const button = document.getElementsByTagName("button")[0];
+        const symbols = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
 
         if (title.trim() === '') {
             errorTitle.classList.add("active");
             button.disabled = true;
         } else {
-            errorTitle.classList.remove("active");
-            setTitle(title);
-            button.disabled = false;
+            for (let i = 0; i < title.length; i++) {
+                let char = title[i];
+                if (symbols.includes(char)) {
+                    errorTitle2.classList.add("active");
+                    button.disabled = true;
+                    break;
+                } else {
+                    errorTitle.classList.remove("active");
+                    errorTitle2.classList.remove("active");
+                    setTitle(title);
+                    button.disabled = false;
+                }
+            }
+
         }
     }
 
@@ -49,6 +62,9 @@ export default function AddTask() {
                     </div>
                     <div className="errorTitle">
                         <p>Il titolo non può essere vuoto</p>
+                    </div>
+                    <div className="errorTitle2">
+                        <p>Il titolo non può contenere caratteri speciali</p>
                     </div>
                     <div>
                         <select id="status" ref={statusRef}>

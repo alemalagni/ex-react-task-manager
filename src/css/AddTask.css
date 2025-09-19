@@ -1,15 +1,18 @@
-.errorTitle p {
+.errorTitle p,
+.errorTitle2 p {
     color: #ffffff;
     font-size: 14px;
     margin: 0;
     padding: 5px 10px;
 }
 
-.errorTitle {
+.errorTitle,
+.errorTitle2 {
     display: none;
 }
 
-.errorTitle.active {
+.errorTitle.active,
+.errorTitle2.active {
     display: block;
     background-color: #df6060;
     position: absolute;
