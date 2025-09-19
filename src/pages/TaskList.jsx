@@ -1,4 +1,3 @@
-import React from "react";
 import { useGlobalContext } from "../components/GlobalContext";
 import TaskRow from "../components/TaskRow";
 import "../css/TaskList.css";
@@ -16,9 +15,9 @@ export default function TaskList() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Titolo</th>
-                            <th>Stato</th>
-                            <th>Data di Creazione</th>
+                            <th className="title">Titolo</th>
+                            <th className="status">Stato</th>
+                            <th className="createdAt">Data di Creazione</th>
                         </tr>
                     </thead>
                     <tbody>

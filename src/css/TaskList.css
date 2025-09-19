@@ -1,8 +1,23 @@
-ul {
-    display: flex;
+.title {
+    width: 250px;
 }
 
-li {
-    list-style-type: none;
-    padding: 5px 10px;
+.status {
+    width: 100px;
+}
+
+.createdAt {
+    width: 200px;
+}
+
+.To {
+    background-color: #f17070;
+}
+
+.Doing {
+    background-color: #e7ca57;
+}
+
+.Done {
+    background-color: #49d182;
 }
