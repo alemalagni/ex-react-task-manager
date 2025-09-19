@@ -44,7 +44,6 @@ export default function AddTask() {
             createdAt: new Date().toISOString(),
         };
 
-        console.log(newTask);
         addTask(newTask).then(
             (response) => {
                 const messageParagraph = document.querySelector(".message p");
