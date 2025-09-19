@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { addTask } from "../components/useTasks.jsx";
 import "../css/AddTask.css";
 
 export default function AddTask() {
@@ -43,6 +44,7 @@ export default function AddTask() {
             createdAt: new Date().toISOString(),
         };
 
+        addTask(newTask);
         console.log(newTask);
     }
 

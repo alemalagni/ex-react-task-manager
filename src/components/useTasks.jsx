@@ -16,9 +16,18 @@ function useTasks() {
     return tasks;
 }
 
-function addTask() {
-    return (console.log("Add Task"));
+async function addTask(newTask) {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+    });
+    const data = await response.json();
+    console.log(data)
 }
+
 function removeTask() {
     return (console.log("Remove Task"));
 }
