@@ -6,7 +6,7 @@ export function GlobalProvider({ children }) {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.URL}/tasks`)
+        fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(res => res.json())
             .then(data => {
                 setTasks(data),
