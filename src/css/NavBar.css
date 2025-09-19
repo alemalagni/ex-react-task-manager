@@ -1,0 +1,15 @@
+nav {
+    background: #f0f0f0;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+nav {
+    margin: 15px;
+    text-decoration: none;
+    color: #333;
+}
