@@ -29,9 +29,19 @@ async function addTask(newTask) {
     return data;
 }
 
-function removeTask() {
-    return (console.log("Remove Task"));
+async function removeTask(id) {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    const data = await response.json();
+    console.log(data)
+    return data;
 }
+
 function updateTask() {
     return (console.log("Update Task"));
 }

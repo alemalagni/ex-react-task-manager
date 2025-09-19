@@ -4,9 +4,7 @@ import "../css/TaskDetail.css";
 
 export default function TaskDetail() {
     const { id } = useParams();
-    console.log("Task ID:", id);
     const tasks = useTasks();
-    console.log("Tasks:", tasks);
     const task = tasks.find(t => t.id == id);
 
     const handleEdit = (id) => {
