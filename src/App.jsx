@@ -1,4 +1,4 @@
-import { GlobalProvider } from "./components/GlobalContext";
+import { GlobalProvider } from "./context/GlobalContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTask from "./pages/AddTask";
 import TaskList from "./pages/TaskList";
