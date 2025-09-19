@@ -1,0 +1,54 @@
+.errorTitle p {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+.errorTitle {
+    display: none;
+}
+
+.errorTitle.active {
+    display: block;
+    background-color: #df6060;
+    position: absolute;
+    top: 45px;
+    border-radius: 5px;
+}
+
+input,
+select {
+    padding: 5px 30px 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+select {
+    height: 60%;
+}
+
+.formRow {
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    resize: vertical;
+    min-height: 60px;
+}

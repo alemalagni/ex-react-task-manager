@@ -38,23 +38,25 @@ export default function AddTask() {
             <h1>Aggiungi Task</h1>
 
             <form>
-                <div>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Titolo"
-                        onChange={(e) => controlTitle(e.target.value)}
-                    />
-                </div>
-                <div className="errorTitle">
-                    <p>Il titolo non può essere vuoto</p>
-                </div>
-                <div>
-                    <select id="status" ref={statusRef}>
-                        <option value="toDo">Da Fare</option>
-                        <option value="doing">In Corso</option>
-                        <option value="done">Fatto</option>
-                    </select>
+                <div className="formRow">
+                    <div>
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="Titolo"
+                            onChange={(e) => controlTitle(e.target.value)}
+                        />
+                    </div>
+                    <div className="errorTitle">
+                        <p>Il titolo non può essere vuoto</p>
+                    </div>
+                    <div>
+                        <select id="status" ref={statusRef}>
+                            <option value="toDo">Da Fare</option>
+                            <option value="doing">In Corso</option>
+                            <option value="done">Fatto</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <textarea
