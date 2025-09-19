@@ -1,4 +1,4 @@
-import { useGlobalContext } from "../components/GlobalContext";
+import { useGlobalContext } from "../context/GlobalContext";
 
 import TaskRow from "../components/TaskRow";
 import "../css/TaskList.css";
