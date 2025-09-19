@@ -70,9 +70,9 @@ export default function AddTask() {
                     </div>
                     <div>
                         <select id="status" ref={statusRef}>
-                            <option value="toDo">Da Fare</option>
-                            <option value="doing">In Corso</option>
-                            <option value="done">Fatto</option>
+                            <option value="To do">Da Fare</option>
+                            <option value="Doing">In Corso</option>
+                            <option value="Done">Fatto</option>
                         </select>
                     </div>
                 </div>
