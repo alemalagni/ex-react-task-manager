@@ -13,20 +13,16 @@ export default function TaskList() {
             <div>
                 <h1>Tasks:</h1>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="title">Titolo</th>
-                            <th className="status">Stato</th>
-                            <th className="createdAt">Data di Creazione</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tasks.map(t =>
-                            <TaskRow key={t.id} task={t} />
-                        )}
-                    </tbody>
-                </table>
+                <div className="taskList">
+                    <div className="rowHeader">
+                        <div className="title">Titolo</div>
+                        <div className="status">Stato</div>
+                        <div className="createdAt">Data di Creazione</div>
+                    </div>
+                    {tasks.map(t =>
+                        <TaskRow key={t.id} task={t} />
+                    )}
+                </div>
             </div>
         </div>
     )

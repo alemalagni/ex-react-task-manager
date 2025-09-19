@@ -21,3 +21,26 @@
 .Done {
     background-color: #49d182;
 }
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 600px;
+}
+
+.rowHeader {
+    display: flex;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.tableRow {
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
