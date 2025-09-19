@@ -26,6 +26,7 @@ async function addTask(newTask) {
     });
     const data = await response.json();
     console.log(data)
+    return data;
 }
 
 function removeTask() {

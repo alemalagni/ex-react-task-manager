@@ -44,8 +44,24 @@ export default function AddTask() {
             createdAt: new Date().toISOString(),
         };
 
-        addTask(newTask);
         console.log(newTask);
+        addTask(newTask).then(
+            (response) => {
+                const messageParagraph = document.querySelector(".message p");
+                const message = document.querySelector(".message");
+
+                if (response.success) {
+                    messageParagraph.innerText = "Task aggiunto con successo!";
+                    message.classList.add("success");
+                } else {
+
+                    messageParagraph.innerText = "Errore durante l'aggiunta del task.";
+                    message.classList.add("error");
+                }
+            }
+        );
+
+
     }
 
     return (
@@ -85,6 +101,9 @@ export default function AddTask() {
                 </div>
                 <button type="submit" onClick={handleSubmit}>Aggiungi Task</button>
             </form>
+            <div className="message">
+                <p></p>
+            </div>
         </div>
     )
 }
