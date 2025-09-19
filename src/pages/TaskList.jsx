@@ -1,3 +1,4 @@
+import React from "react";
 import { useGlobalContext } from "../components/GlobalContext";
 import "../css/TaskList.css";
 
@@ -10,13 +11,23 @@ export default function TaskList() {
         <div>
             <div>
                 <h1>Tasks:</h1>
-                <ul>
-                    {Array.isArray(tasks) && tasks.length > 0 ? (
-                        tasks.map(t => <li key={t.id}>{t.title}</li>)
-                    ) : (
-                        <li>Nessun task disponibile</li>
-                    )}
-                </ul>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titolo</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tasks.map(t =>
+                            <tr key={t.id}>
+                                <td>{t.title}</td>
+                                <td>{t.description}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </div>
         </div>
     )
