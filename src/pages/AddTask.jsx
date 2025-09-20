@@ -1,9 +1,12 @@
 import { useState, useRef } from "react";
 import { addTask } from "../components/useTasks.jsx";
+import Success from "../components/Success.jsx";
 import "../css/AddTask.css";
 
 export default function AddTask() {
     const [title, setTitle] = useState('');
+    const successMessage = ['Errore durante l\'aggiunta del task.', 'Task aggiunto con successo!'];
+    const [success, setSuccess] = useState(true);
     const statusRef = useRef();
     const descriptionRef = useRef();
 
@@ -44,30 +47,18 @@ export default function AddTask() {
             createdAt: new Date().toISOString(),
         };
 
-        addTask(newTask).then(
-            (response) => {
-                const messageParagraph = document.querySelector(".message p");
-                const message = document.querySelector(".message");
-
-                if (response.success) {
-                    messageParagraph.innerText = "Task aggiunto con successo!";
-                    message.classList.add("success");
-                } else {
-
-                    messageParagraph.innerText = "Errore durante l'aggiunta del task.";
-                    message.classList.add("error");
-                }
-            }
-        );
-
-
+        addTask(newTask).then((response) => {
+            console.log(response);
+            const fullfilled = response.success
+            fullfilled ? setSuccess(true) : setSuccess(false);
+        });
     }
 
     return (
         <div>
             <h1>Aggiungi Task</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="formRow">
                     <div>
                         <input
@@ -98,11 +89,9 @@ export default function AddTask() {
                         ref={descriptionRef}
                     />
                 </div>
-                <button type="submit" onClick={handleSubmit}>Aggiungi Task</button>
+                <button type="submit">Aggiungi Task</button>
             </form>
-            <div className="message">
-                <p></p>
-            </div>
+            <Success success={success} response={successMessage} />
         </div>
     )
 }

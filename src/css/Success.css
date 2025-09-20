@@ -1,0 +1,38 @@
+.messageDiv.success {
+    display: block;
+    background-color: green;
+    position: absolute;
+}
+
+.messageDiv.error {
+    display: block;
+    background-color: red;
+    position: absolute;
+}
+
+.messageDiv {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.messageDiv p {
+    margin: 0;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.okButton {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}

@@ -55,37 +55,3 @@ textarea {
     resize: vertical;
     min-height: 60px;
 }
-
-.message {
-    display: none;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-.message.success {
-    display: block;
-    background-color: green;
-    position: absolute;
-    top: 15px;
-    margin: auto;
-    left: 40%;
-    right: 40%;
-}
-
-.message.error {
-    display: block;
-    background-color: red;
-    position: absolute;
-    top: 15px;
-    margin: auto;
-    left: 35%;
-    right: 35%;
-}
-
-.message.success p,
-.message.error p {
-    margin: 0;
-    padding: 10px;
-    color: #ffffff;
-}
