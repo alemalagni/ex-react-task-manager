@@ -5,11 +5,11 @@ function endSuccess() {
     messageDiv.classList.remove("success", "error");
 }
 
-export default function Success({ success = true, response = ['Errore', 'Successo!'] }) {
+export default function Success({ success = null, response = ['Errore', 'Successo!'] }) {
     const message = response[success ? 1 : 0];
-
+    const className = success === null ? '' : (success ? 'success' : 'error');
     return (
-        <div className={`messageDiv ${success ? 'success' : 'error'}`}>
+        <div className={`messageDiv ${className}`}>
             <p>{message}</p>
             <button onClick={endSuccess} className="okButton">Ok</button>
         </div>

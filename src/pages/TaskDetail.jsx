@@ -1,18 +1,23 @@
 import { useParams } from "react-router-dom";
-import { useTasks } from "../components/useTasks";
+import { useState } from "react";
+import { useTasks, removeTask } from "../components/useTasks";
+import Success from "../components/Success";
 import "../css/TaskDetail.css";
 
 export default function TaskDetail() {
     const { id } = useParams();
     const tasks = useTasks();
     const task = tasks.find(t => t.id == id);
+    const [success, setSuccess] = useState(null);
 
     const handleEdit = (id) => {
         console.log("Modifica task id:", id);
     };
 
     const handleDelete = (id) => {
-        console.log("Elimina task con ID:", id);
+        removeTask(id).then((response) => {
+            setSuccess(response.success);
+        })
     };
 
     return (
@@ -39,6 +44,7 @@ export default function TaskDetail() {
                         <button onClick={() => handleEdit(task.id)}>Modifica</button>
                         <button onClick={() => handleDelete(task.id)} className="deleteButton">Elimina</button>
                     </div>
+                    <Success success={success} response={["Errore nella cancellazione della task", "Task cancellato con successo!"]} />
                 </div>
             ) : (
                 <p>Task not found</p>
