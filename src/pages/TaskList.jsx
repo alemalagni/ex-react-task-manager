@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../context/GlobalContext";
+import { useMemo, useState } from "react";
 
 import TaskRow from "../components/TaskRow";
 import "../css/TaskList.css";
@@ -6,7 +7,35 @@ import "../css/TaskList.css";
 export default function TaskList() {
     const { tasks } = useGlobalContext();
 
-    console.log(tasks);
+    const [sortBy, setSortBy] = useState('createdAt');
+    const [sortOrder, setSortOrder] = useState(1);
+    const sortIcon = sortOrder === 1 ? '▲' : '▼';
+
+    const handleSort = (field) => {
+        if (sortBy === field) {
+            setSortOrder(prev => prev * -1);
+        } else {
+            setSortBy(field);
+            setSortOrder(1);
+        }
+    }
+
+    const sortedTasks = useMemo(() => {
+        let comparison
+        console.log(tasks)
+
+        if (sortBy === 'title') {
+            comparison = (a, b) => a.title.localeCompare(b.title) * sortOrder;
+        } else if (sortBy === 'status') {
+            const statusOrder = ['To do', 'Doing', 'Done'];
+            comparison = (a, b) => (statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status)) * sortOrder;
+        } else if (sortBy === 'createdAt') {
+            comparison = (a, b) => (new Date(a.createdAt) - new Date(b.createdAt)) * sortOrder;
+        }
+
+        return [...tasks].sort(comparison);
+
+    }, [tasks, sortBy, sortOrder]);
 
     return (
         <div>
@@ -15,11 +44,11 @@ export default function TaskList() {
 
                 <div className="taskList">
                     <div className="rowHeader">
-                        <div className="title">Titolo</div>
-                        <div className="status">Stato</div>
-                        <div className="createdAt">Data di Creazione</div>
+                        <div className="title" onClick={() => handleSort('title')}>Titolo {sortBy === 'title' && sortIcon}</div>
+                        <div className="status" onClick={() => handleSort('status')}>Stato {sortBy === 'status' && sortIcon}</div>
+                        <div className="createdAt" onClick={() => handleSort('createdAt')}>Data di Creazione {sortBy === 'createdAt' && sortIcon}</div>
                     </div>
-                    {tasks.map(t =>
+                    {sortedTasks.map(t =>
                         <TaskRow key={t.id} task={t} />
                     )}
                 </div>
