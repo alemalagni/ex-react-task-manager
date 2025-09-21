@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTasks, removeTask } from "../components/useTasks";
 import Success from "../components/Success";
 import Modal from "../components/Modal";
@@ -15,11 +15,18 @@ export default function TaskDetail() {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
 
+    const [editDisabled, setEditDisabled] = useState(false);
+
     const handleDelete = (id) => {
         removeTask(id).then((response) => {
             setSuccess(response.success);
         })
     };
+
+    useEffect(() => {
+        const bool = showEdit ? true : false
+        setEditDisabled(bool)
+    }, [showEdit]);
 
     return (
         <>
@@ -43,11 +50,15 @@ export default function TaskDetail() {
                             <p>{task.description}</p>
                         </div>
                         <div className="actionButtons">
-                            <button onClick={() => setShowEdit(true)}>Modifica</button>
+                            <button onClick={() => { setShowEdit(true) }} disabled={editDisabled}>Modifica</button>
                             <button onClick={() => setShowDeleteModal(true)} className="deleteButton">Elimina</button>
                         </div>
                     </div>
-                    <EditTask show={showEdit} task={task} />
+                    <EditTask
+                        show={showEdit}
+                        task={task}
+                        onClose={() => setShowEdit(false)}
+                    />
                     <Modal
                         title="Conferma eliminazione"
                         content={<p>Vuoi davvero eliminare questa task?</p>}

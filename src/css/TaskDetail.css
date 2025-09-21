@@ -1,3 +1,10 @@
+.taskDetailPage {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 20px;
+}
+
 .taskDetails {
     display: flex;
     padding: 20px 0px;
@@ -50,15 +57,6 @@
 
 .confirmButton.delete:hover {
     background-color: #ff4c4c;
-}
-
-.confirmButton.edit {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.confirmButton.edit:hover {
-    background-color: #45a049;
 }
 
 .taskDetailContainer {

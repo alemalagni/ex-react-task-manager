@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "../components/Modal";
 import "../css/EditTask.css";
 
-export default function EditTask({ show, task }) {
+export default function EditTask({ show, task, onClose }) {
 
     const [title, setTitle] = useState(task.title);
     const [status, setStatus] = useState(task.status);
@@ -10,6 +10,7 @@ export default function EditTask({ show, task }) {
     let UpdateTask = { title, status, description };
 
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteEditModal, setShowDeleteEditModal] = useState(false);
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +21,7 @@ export default function EditTask({ show, task }) {
         console.log("Modifica salvata per task id:", task.id);
         UpdateTask = { title: title, status: status, description: description };
         console.log(UpdateTask)
+        onClose()
     }
 
     function controlTitle(title) {
@@ -55,7 +57,7 @@ export default function EditTask({ show, task }) {
     return (
         <div>
             <h2>Modifica Task</h2>
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={handleEditSubmit} className="editForm">
                 <div className="topEditSection">
                     <label>
                         <span>Titolo:</span>
@@ -90,7 +92,10 @@ export default function EditTask({ show, task }) {
                         onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                 </label>
-                <button type="submit" className="SaveEdit">Salva Modifiche</button>
+                <div className="editButtons">
+                    <button type="button" className="closeEdit" onClick={() => setShowDeleteEditModal(true)}>Cancella</button>
+                    <button type="submit" className="SaveEdit">Salva</button>
+                </div>
             </form>
             <Modal
                 title="Modifica Task"
@@ -107,6 +112,25 @@ export default function EditTask({ show, task }) {
                 }}
                 confirmText="Salva"
                 btn="edit"
+            />
+            <Modal
+                title="Cancella Modifiche"
+                content={
+                    <div>
+                        <p>Vuoi davvero cancellare queste modifiche?</p>
+                    </div>
+                }
+                show={showDeleteEditModal}
+                onClose={() => setShowDeleteEditModal(false)}
+                onConfirm={() => {
+                    setTitle(task.title);
+                    setStatus(task.status);
+                    setDescription(task.description);
+                    setShowDeleteEditModal(false);
+                    onClose();
+                }}
+                confirmText="Cancella"
+                btn="delete"
             />
         </div>
     )

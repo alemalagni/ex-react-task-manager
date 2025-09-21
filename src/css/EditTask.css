@@ -7,13 +7,33 @@
     position: relative;
 }
 
+.editForm {
+    width: 465px;
+}
+
 .errorTitle,
 .errorTitle2 {
     display: none;
-    top: 77%;
 }
 
 .errorTitle.active,
 .errorTitle2.active {
     display: block;
+    top: 80%;
+}
+
+.editButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.confirmButton.edit,
+.SaveEdit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.confirmButton.edit:hover,
+.SaveEdit:hover {
+    background-color: #45a049;
 }
