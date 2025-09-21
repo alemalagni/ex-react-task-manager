@@ -1,3 +1,5 @@
+import "../css/EditTask.css";
+
 export default function EditTask({ show, task }) {
 
     const handleEditSubmit = (e) => {
@@ -39,29 +41,31 @@ export default function EditTask({ show, task }) {
         <div>
             <h2>Modifica Task</h2>
             <form onSubmit={handleEditSubmit}>
-                <label>
-                    Titolo:
-                    <input type="text"
-                        name="title"
-                        value={task.title}
-                        onChange={(e) => controlTitle(e.target.value)}
-                    />
-                </label>
-                <div className="errorTitle">
-                    <p>Il titolo non può essere vuoto</p>
+                <div className="topEditSection">
+                    <label>
+                        <span>Titolo:</span>
+                        <input type="text"
+                            name="title"
+                            value={task.title}
+                            onChange={(e) => controlTitle(e.target.value)}
+                        />
+                    </label>
+                    <div className="errorTitle">
+                        <p>Il titolo non può essere vuoto</p>
+                    </div>
+                    <div className="errorTitle2">
+                        <p>Il titolo non può contenere caratteri speciali</p>
+                    </div>
+                    <label>
+                        <span>Stato:</span>
+                        <select name="status"
+                            value={task.status}>
+                            <option value="To do">Da Fare</option>
+                            <option value="Doing">In Corso</option>
+                            <option value="Done">Fatto</option>
+                        </select>
+                    </label>
                 </div>
-                <div className="errorTitle2">
-                    <p>Il titolo non può contenere caratteri speciali</p>
-                </div>
-                <label>
-                    Stato:
-                    <select name="status"
-                        value={task.status}>
-                        <option value="To do">Da Fare</option>
-                        <option value="Doing">In Corso</option>
-                        <option value="Done">Fatto</option>
-                    </select>
-                </label>
                 <label>
                     Descrizione:
                     <textarea name="description"

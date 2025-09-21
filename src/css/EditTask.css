@@ -1,0 +1,17 @@
+.topEditSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.errorTitle,
+.errorTitle2 {
+    display: none;
+}
+
+.errorTitle.active,
+.errorTitle2.active {
+    display: block;
+}
