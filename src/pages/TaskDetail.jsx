@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTasks, removeTask } from "../components/useTasks";
 import Success from "../components/Success";
 import Modal from "../components/Modal";
+import EditTask from "../components/EditTask";
 import "../css/TaskDetail.css";
 
 export default function TaskDetail() {
@@ -13,6 +14,7 @@ export default function TaskDetail() {
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
 
     const handleEdit = (id) => {
         console.log("Modifica task id:", id);
@@ -45,9 +47,10 @@ export default function TaskDetail() {
                         <p>{task.description}</p>
                     </div>
                     <div className="actionButtons">
-                        <button onClick={() => setShowEditModal(true)}>Modifica</button>
+                        <button onClick={() => setShowEdit(true)}>Modifica</button>
                         <button onClick={() => setShowDeleteModal(true)} className="deleteButton">Elimina</button>
                     </div>
+                    <EditTask show={showEdit} task={task} />
                     <Modal
                         title="Conferma eliminazione"
                         content={<p>Vuoi davvero eliminare questa task?</p>}
