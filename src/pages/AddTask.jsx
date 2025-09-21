@@ -91,7 +91,7 @@ export default function AddTask() {
                 </div>
                 <button type="submit">Aggiungi Task</button>
             </form>
-            <Success success={success} response={successMessage} />
+            <Success success={success} response={successMessage} link="/" />
         </div>
     )
 }

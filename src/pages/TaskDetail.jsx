@@ -58,7 +58,7 @@ export default function TaskDetail() {
                         }}
                         confirmText="Elimina"
                     />
-                    <Success success={success} response={["Errore nella cancellazione della task", "Task cancellato con successo!"]} />
+                    <Success success={success} response={["Errore nella cancellazione della task", "Task cancellato con successo!"]} link="/" />
                 </div>
             ) : (
                 <p>Task not found</p>
