@@ -5,7 +5,6 @@ import "../css/AddTask.css";
 
 export default function AddTask() {
     const [title, setTitle] = useState('');
-    const successMessage = ['Errore durante l\'aggiunta del task.', 'Task aggiunto con successo!'];
     const [success, setSuccess] = useState(null);
     const statusRef = useRef();
     const descriptionRef = useRef();
@@ -91,7 +90,7 @@ export default function AddTask() {
                 </div>
                 <button type="submit">Aggiungi Task</button>
             </form>
-            <Success success={success} response={successMessage} link="/" />
+            <Success success={success} response={['Errore durante l\'aggiunta del task.', 'Task aggiunto con successo!']} link="/" />
         </div>
     )
 }
