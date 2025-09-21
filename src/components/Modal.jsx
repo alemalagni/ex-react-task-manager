@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import "../css/Modal.css";
 
-export default function Modal({ title, content, show, onClose, onConfirm, confirmText = 'Conferma' }) {
+export default function Modal({ title, content, show, onClose, onConfirm, confirmText = 'Conferma', btn }) {
     if (!show) return null;
 
     return createPortal(
@@ -15,7 +15,7 @@ export default function Modal({ title, content, show, onClose, onConfirm, confir
                 </div>
                 <div className="modalActions">
                     <button className="cancelButton" onClick={onClose}>Annulla</button>
-                    <button className="confirmButton" onClick={onConfirm}>{confirmText}</button>
+                    <button className={`confirmButton ${btn}`} onClick={onConfirm}>{confirmText}</button>
                 </div>
             </div>
         </div>,

@@ -42,3 +42,21 @@
 .descriptionSection {
     padding-bottom: 20px;
 }
+
+.confirmButton.delete {
+    background-color: #f17070;
+    color: white;
+}
+
+.confirmButton.delete:hover {
+    background-color: #ff4c4c;
+}
+
+.confirmButton.edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.confirmButton.edit:hover {
+    background-color: #45a049;
+}
