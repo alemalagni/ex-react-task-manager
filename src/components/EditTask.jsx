@@ -29,6 +29,7 @@ export default function EditTask({ show, task }) {
         const symbols = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
 
         if (title.trim() === '') {
+            setTitle(title);
             errorTitle.classList.add("active");
             button.disabled = true;
         } else {
@@ -41,8 +42,8 @@ export default function EditTask({ show, task }) {
                 } else {
                     errorTitle.classList.remove("active");
                     errorTitle2.classList.remove("active");
-                    setTitle(title);
                     button.disabled = false;
+                    setTitle(title);
                 }
             }
 
