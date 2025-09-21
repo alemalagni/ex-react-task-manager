@@ -1,8 +1,18 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import TaskRow from "../components/TaskRow";
 import "../css/TaskList.css";
+
+function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            callback(value);
+        }, delay);
+    }
+}
 
 export default function TaskList() {
     const { tasks } = useGlobalContext();
@@ -12,6 +22,8 @@ export default function TaskList() {
     const sortIcon = sortOrder === 1 ? '▲' : '▼';
 
     const [Search, setSearch] = useState('');
+
+    const debounceSearch = useCallback(debounce(setSearch, 500), []);
 
     const handleSort = (field) => {
         if (sortBy === field) {
@@ -47,8 +59,7 @@ export default function TaskList() {
                 <input
                     type="text"
                     placeholder="Cerca task..."
-                    value={Search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => debounceSearch(e.target.value)}
                 />
             </div>
             <div>
