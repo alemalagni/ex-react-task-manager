@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "../css/EditTask.css";
 
 export default function EditTask({ show, task }) {
+
+    const [title, setTitle] = useState(task.title);
+    const [status, setStatus] = useState(task.status);
+    const [description, setDescription] = useState(task.description);
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
@@ -46,7 +51,7 @@ export default function EditTask({ show, task }) {
                         <span>Titolo:</span>
                         <input type="text"
                             name="title"
-                            value={task.title}
+                            value={title}
                             onChange={(e) => controlTitle(e.target.value)}
                         />
                     </label>
@@ -59,17 +64,20 @@ export default function EditTask({ show, task }) {
                     <label>
                         <span>Stato:</span>
                         <select name="status"
-                            value={task.status}>
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}>
                             <option value="To do">Da Fare</option>
                             <option value="Doing">In Corso</option>
                             <option value="Done">Fatto</option>
+
                         </select>
                     </label>
                 </div>
                 <label>
                     Descrizione:
                     <textarea name="description"
-                        value={task.description}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                 </label>
                 <button type="submit" className="SaveEdit">Salva Modifiche</button>

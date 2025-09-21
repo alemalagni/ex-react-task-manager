@@ -4,11 +4,13 @@
     align-items: center;
     margin-bottom: 10px;
     text-align: left;
+    position: relative;
 }
 
 .errorTitle,
 .errorTitle2 {
     display: none;
+    top: 77%;
 }
 
 .errorTitle.active,
