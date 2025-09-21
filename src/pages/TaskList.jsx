@@ -11,6 +11,8 @@ export default function TaskList() {
     const [sortOrder, setSortOrder] = useState(1);
     const sortIcon = sortOrder === 1 ? '▲' : '▼';
 
+    const [Search, setSearch] = useState('');
+
     const handleSort = (field) => {
         if (sortBy === field) {
             setSortOrder(prev => prev * -1);
@@ -20,7 +22,7 @@ export default function TaskList() {
         }
     }
 
-    const sortedTasks = useMemo(() => {
+    const requestedTasks = useMemo(() => {
         let comparison
         console.log(tasks)
 
@@ -33,12 +35,22 @@ export default function TaskList() {
             comparison = (a, b) => (new Date(a.createdAt) - new Date(b.createdAt)) * sortOrder;
         }
 
-        return [...tasks].sort(comparison);
+        return [...tasks]
+            .filter(t => t.title.toLowerCase().includes(Search.toLowerCase()))
+            .sort(comparison);
 
-    }, [tasks, sortBy, sortOrder]);
+    }, [tasks, sortBy, sortOrder, Search]);
 
     return (
         <div>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Cerca task..."
+                    value={Search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
             <div>
                 <h1>Tasks:</h1>
 
@@ -48,7 +60,7 @@ export default function TaskList() {
                         <div className="status" onClick={() => handleSort('status')}>Stato {sortBy === 'status' && sortIcon}</div>
                         <div className="createdAt" onClick={() => handleSort('createdAt')}>Data di Creazione {sortBy === 'createdAt' && sortIcon}</div>
                     </div>
-                    {sortedTasks.map(t =>
+                    {requestedTasks.map(t =>
                         <TaskRow key={t.id} task={t} />
                     )}
                 </div>
