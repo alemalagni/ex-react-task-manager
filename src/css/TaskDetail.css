@@ -60,3 +60,13 @@
 .confirmButton.edit:hover {
     background-color: #45a049;
 }
+
+.taskDetailContainer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+}

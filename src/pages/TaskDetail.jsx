@@ -30,25 +30,27 @@ export default function TaskDetail() {
         <>
             {task ? (
                 <div>
-                    <h1>{task.title}</h1>
-                    <div className="taskDetails">
-                        <div className="statusSection">
-                            <p>Status: </p>
-                            <h2 className={`${task.status}`}>{task.status}</h2>
+                    <div className="taskDetailContainer">
+                        <h1>{task.title}</h1>
+                        <div className="taskDetails">
+                            <div className="statusSection">
+                                <p>Status: </p>
+                                <h2 className={`${task.status}`}>{task.status}</h2>
+                            </div>
+                            <div>
+                                <h4>Creato il:</h4>
+                                <p>{new Date(task.createdAt).toLocaleDateString()}</p>
+                                <p>{new Date(task.createdAt).toLocaleTimeString()}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Creato il:</h4>
-                            <p>{new Date(task.createdAt).toLocaleDateString()}</p>
-                            <p>{new Date(task.createdAt).toLocaleTimeString()}</p>
+                        <div className="descriptionSection">
+                            <h4>Descrizione:</h4>
+                            <p>{task.description}</p>
                         </div>
-                    </div>
-                    <div className="descriptionSection">
-                        <h4>Descrizione:</h4>
-                        <p>{task.description}</p>
-                    </div>
-                    <div className="actionButtons">
-                        <button onClick={() => setShowEdit(true)}>Modifica</button>
-                        <button onClick={() => setShowDeleteModal(true)} className="deleteButton">Elimina</button>
+                        <div className="actionButtons">
+                            <button onClick={() => setShowEdit(true)}>Modifica</button>
+                            <button onClick={() => setShowDeleteModal(true)} className="deleteButton">Elimina</button>
+                        </div>
                     </div>
                     <EditTask show={showEdit} task={task} />
                     <Modal
