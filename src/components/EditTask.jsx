@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { updateTask } from "../components/useTasks";
 import Modal from "../components/Modal";
 import "../css/EditTask.css";
 
@@ -7,7 +8,6 @@ export default function EditTask({ show, task, onClose }) {
     const [title, setTitle] = useState(task.title);
     const [status, setStatus] = useState(task.status);
     const [description, setDescription] = useState(task.description);
-    let UpdateTask = { title, status, description };
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteEditModal, setShowDeleteEditModal] = useState(false);
@@ -18,9 +18,10 @@ export default function EditTask({ show, task, onClose }) {
     }
 
     function UpdateEdit() {
-        console.log("Modifica salvata per task id:", task.id);
-        UpdateTask = { title: title, status: status, description: description };
-        console.log(UpdateTask)
+        const newTask = { title: title, status: status, description: description }
+        updateTask(task.id, newTask).then((response) => {
+            console.log(response);
+        });
         onClose()
     }
 

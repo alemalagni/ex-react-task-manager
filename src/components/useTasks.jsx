@@ -42,8 +42,19 @@ async function removeTask(id) {
     return data;
 }
 
-function updateTask() {
-    return (console.log("Update Task"));
+async function updateTask(id, updatedTask) {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTask),
+    });
+
+    const data = await response.json();
+    console.log("Update Task", id);
+    return data;
 }
+
 
 export { useTasks, addTask, removeTask, updateTask };
