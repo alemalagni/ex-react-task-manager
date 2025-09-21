@@ -13,12 +13,7 @@ export default function TaskDetail() {
     const [success, setSuccess] = useState(null);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
-
-    const handleEdit = (id) => {
-        console.log("Modifica task id:", id);
-    };
 
     const handleDelete = (id) => {
         removeTask(id).then((response) => {
@@ -29,7 +24,7 @@ export default function TaskDetail() {
     return (
         <>
             {task ? (
-                <div>
+                <div className="taskDetailPage">
                     <div className="taskDetailContainer">
                         <h1>{task.title}</h1>
                         <div className="taskDetails">
@@ -64,22 +59,6 @@ export default function TaskDetail() {
                         }}
                         confirmText="Elimina"
                         btn="delete"
-                    />
-                    <Modal
-                        title="Modifica Task"
-                        content={
-                            <div>
-                                <p>Vuoi davvero salvare queste modifiche?</p>
-                            </div>
-                        }
-                        show={showEditModal}
-                        onClose={() => setShowEditModal(false)}
-                        onConfirm={() => {
-                            handleEdit(task.id);
-                            setShowEditModal(false);
-                        }}
-                        confirmText="Salva"
-                        btn="edit"
                     />
                     <Success success={success} response={["Errore nella cancellazione della task", "Task cancellato con successo!"]} link="/" />
                 </div>

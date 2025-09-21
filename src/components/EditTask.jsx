@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "../components/Modal";
 import "../css/EditTask.css";
 
 export default function EditTask({ show, task }) {
@@ -6,11 +7,19 @@ export default function EditTask({ show, task }) {
     const [title, setTitle] = useState(task.title);
     const [status, setStatus] = useState(task.status);
     const [description, setDescription] = useState(task.description);
+    let UpdateTask = { title, status, description };
+
+    const [showEditModal, setShowEditModal] = useState(false);
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
+        setShowEditModal(true);
+    }
+
+    function UpdateEdit() {
         console.log("Modifica salvata per task id:", task.id);
-        console.log(task)
+        UpdateTask = { title: title, status: status, description: description };
+        console.log(UpdateTask)
     }
 
     function controlTitle(title) {
@@ -82,6 +91,22 @@ export default function EditTask({ show, task }) {
                 </label>
                 <button type="submit" className="SaveEdit">Salva Modifiche</button>
             </form>
+            <Modal
+                title="Modifica Task"
+                content={
+                    <div>
+                        <p>Vuoi davvero salvare queste modifiche?</p>
+                    </div>
+                }
+                show={showEditModal}
+                onClose={() => setShowEditModal(false)}
+                onConfirm={() => {
+                    UpdateEdit();
+                    setShowEditModal(false);
+                }}
+                confirmText="Salva"
+                btn="edit"
+            />
         </div>
     )
 }
