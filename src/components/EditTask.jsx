@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { updateTask } from "../components/useTasks";
+import Success from "../components/Success";
 import Modal from "../components/Modal";
 import "../css/EditTask.css";
 
@@ -12,6 +13,9 @@ export default function EditTask({ show, task, onClose }) {
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteEditModal, setShowDeleteEditModal] = useState(false);
 
+    const [success, setSuccess] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleEditSubmit = (e) => {
         e.preventDefault();
         setShowEditModal(true);
@@ -20,9 +24,11 @@ export default function EditTask({ show, task, onClose }) {
     function UpdateEdit() {
         const newTask = { title: title, status: status, description: description }
         updateTask(task.id, newTask).then((response) => {
-            console.log(response);
+            console.log(response)
+            setSuccess(response.success);
+            console.log(success)
+            if (!response.success) setErrorMessage(response.message)
         });
-        onClose()
     }
 
     function controlTitle(title) {
@@ -133,6 +139,7 @@ export default function EditTask({ show, task, onClose }) {
                 confirmText="Cancella"
                 btn="delete"
             />
+            <Success success={success} response={[`Errore aggiornamento: ${errorMessage}`, 'Task aggiornata!']} link={`/task/${task.id}`} />
         </div>
     )
 }
